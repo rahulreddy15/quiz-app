@@ -1,0 +1,67 @@
+            <FormControl required fullWidth margin="normal">
+              <InputLabel htmlFor="password" className={classes.labels}>
+                password
+              </InputLabel>
+              <Input
+                name="password"
+                autoComplete="password"
+                className={classes.inputs}
+                disableUnderline={true}
+                onChange={this.handleChange("password")}
+                type={this.state.hidePassword ? "password" : "input"}
+                endAdornment={
+                  this.state.hidePassword ? (
+                    <InputAdornment position="end">
+                      <VisibilityOffTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  ) : (
+                    <InputAdornment position="end">
+                      <VisibilityTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  )
+                }
+              />
+            </FormControl>
+
+            <FormControl required fullWidth margin="normal">
+              <InputLabel htmlFor="passwordConfrim" className={classes.labels}>
+                confrim password
+              </InputLabel>
+              <Input
+                name="passwordConfrim"
+                autoComplete="passwordConfrim"
+                className={classes.inputs}
+                disableUnderline={true}
+                onClick={this.state.showPassword}
+                onChange={this.handleChange("passwordConfrim")}
+                type={this.state.hidePassword ? "password" : "input"}
+                endAdornment={
+                  this.state.hidePassword ? (
+                    <InputAdornment position="end">
+                      <VisibilityOffTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  ) : (
+                    <InputAdornment position="end">
+                      <VisibilityTwoToneIcon
+                        fontSize="default"
+                        className={classes.passwordEye}
+                        onClick={this.showPassword}
+                      />
+                    </InputAdornment>
+                  )
+                }
+              />
+            </FormControl>
+
