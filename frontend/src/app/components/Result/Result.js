@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
-import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { post } from "axios";
 import addCssTransition from "../../utils/css-transition";
 import questionStyle from "./result-style";
@@ -35,7 +35,11 @@ class Result extends React.Component {
         "Content-Type": "multipart/form-data",
       },
     };
-    post("https://obscure-stream-30055.herokuapp.com/updateLogFile", data, config)
+    post(
+      "https://obscure-stream-30055.herokuapp.com/updateLogFile",
+      data,
+      config
+    )
       .then((res) => {
         console.log(res);
       })
@@ -82,7 +86,8 @@ class Result extends React.Component {
               variant="contained"
               className={classes.resetButton}
               color="secondary"
-              onClick={() => this.props.history.push("/")}
+              component={Link}
+              to="/home"
             >
               Try Again
             </Button>
