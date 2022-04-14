@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import addCssTransition from "../../utils/css-transition";
 import questionStyle from "./result-style";
 import theme from "../../styles/theme";
@@ -40,18 +40,11 @@ class Result extends React.Component {
                         </pre>
 
                         <Button
-                            variant="contained"
-                            className={classes.resetButton}
-                            onClick={this.props.tryAgainPressed}
-                            color="secondary"
-                        >
-                            Try Again
-                        </Button>
-                        <Button
+                            component={Link}
+                            to="/"
                             variant="contained"
                             className={classes.resetButton}
                             onClick={this.redirectHome}
-                            color="secondary"
                         >
                             Go Home
                         </Button>
