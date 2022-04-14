@@ -157,7 +157,7 @@ function LogApp(props) {
       </Paper>
       <Modal open={showLogData} className={classes.modalStyle1}>
         <div>
-          <Button
+        <Button
             size="small"
             color="primary"
             variant="contained"
@@ -165,13 +165,7 @@ function LogApp(props) {
           >
             Close
           </Button>
-          {logData.map((log, index) => {
-            return (
-              <div key={index}>
-                <p>{log}</p>
-              </div>
-            );
-          })}
+          <pre><code>{JSON.stringify(logData, null, 4)}</code></pre>
         </div>
       </Modal>
     </div>
@@ -179,3 +173,11 @@ function LogApp(props) {
 }
 
 export default withStyles(register)(LogApp);
+
+          // {logData.map((log, index) => {
+          //   return (
+          //     <div key={index}>
+          //       <p>{log}</p>
+          //     </div>
+          //   );
+          // })}
