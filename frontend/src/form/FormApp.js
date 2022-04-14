@@ -73,8 +73,13 @@ function QuizFormApp(props) {
     e.preventDefault();
     fileUpload()
       .then((response) => {
-        setData(response.data.message);
-        console.log(response);
+        if (res.data.status_code === "400") {
+          setError(res.data.message);
+          setErrorOpen(true);
+        } else if (res.data.status_code === "200") {
+          setData(response.data.message);
+          console.log(response);
+        }
       })
       .catch((error) => {
         console.log(error);
