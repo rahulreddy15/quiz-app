@@ -21,7 +21,7 @@ function LogApp(props) {
   const [logData, setLogData] = useState({});
 
   const logFileRequest = () => {
-    const url = "https://obscure-stream-30055.herokuapp.com/getLogFile";
+    const url = "https://obscure-stream-30055.herokuapp.com/getlogfile";
     const formData = new FormData();
     formData.append("name", name);
     const config = {
