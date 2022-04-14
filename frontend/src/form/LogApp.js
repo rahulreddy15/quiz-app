@@ -22,7 +22,6 @@ function LogApp(props) {
   const [logData, setLogData] = useState([]);
   const [showLogData, setShowLogData] = useState(false);
 
-
   const logFileRequest = () => {
     const url = "https://obscure-stream-30055.herokuapp.com/getLogFile";
     const formData = new FormData();
@@ -160,29 +159,34 @@ function LogApp(props) {
           </Snackbar>
         ) : null}
       </Paper>
-      <Modal open={showLogData} className={classes.modalStyle1}>
-        <div>
-        <Button
-            size="small"
-            color="primary"
-            variant="contained"
-            onClick={(e) => setShowLogData(false)}
-          >
-            Close
-          </Button>
-          <pre><code>{JSON.stringify(logData, null, 4)}</code></pre>
-        </div>
-      </Modal>
+      <div>
+        <CssBaseline />
+        <Modal open={showLogData} className={classes.modalStyle1}>
+          <div>
+            <Button
+              size="small"
+              color="primary"
+              variant="contained"
+              onClick={(e) => setShowLogData(false)}
+            >
+              Close
+            </Button>
+            <pre>
+              <code>{JSON.stringify(logData, null, 4)}</code>
+            </pre>
+          </div>
+        </Modal>
+      </div>
     </div>
   );
 }
 
 export default withStyles(register)(LogApp);
 
-          // {logData.map((log, index) => {
-          //   return (
-          //     <div key={index}>
-          //       <p>{log}</p>
-          //     </div>
-          //   );
-          // })}
+// {logData.map((log, index) => {
+//   return (
+//     <div key={index}>
+//       <p>{log}</p>
+//     </div>
+//   );
+// })}
