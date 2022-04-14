@@ -66,10 +66,6 @@ class QuizApp extends React.Component {
   }
 
   componentDidMount() {
-    let data = this.getLocalData();
-    if (data == null) {
-      window.location.href = "/";
-    }
     window.onorientationchange = () => this.updateButtonsPos();
     window.onresize = () => this.updateButtonsPos();
 
