@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { post } from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import { register } from "./form-style";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { FormControl, Input, InputLabel, Button } from "@material-ui/core";
