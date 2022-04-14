@@ -12,7 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ErrorIcon from "@material-ui/icons/Error";
 import CloseIcon from "@material-ui/icons/Close";
 
-function QuizFormApp(props) {
+function LogApp(props) {
   const { classes } = props;
 
   const [name, setName] = useState("");
@@ -38,24 +38,35 @@ function QuizFormApp(props) {
   };
 
   const isValid = () => {
-    if (name == "") {
-      setError("Please enter a name");
-      setErrorOpen(true);
-    } else {
+    if (name === "" || name === null) {
+      return false;
+    }
+    {
       return true;
     }
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    logFileRequest()
-      .then((response) => {
-        setLogData(response.data.message);
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (isValid()) {
+      logFileRequest()
+        .then((res) => {
+          if (res.data.status_code === "400") {
+            setError(res.data.message);
+            setErrorOpen(true);
+          } else if (res.data.status_code === "200") {
+            setLogData(res.data.message);
+            console.log(res.data);
+          }
+        })
+        .catch((err) => {
+          setError(err.response.message);
+          setErrorOpen(true);
+        });
+    } else {
+      setError("Name is required");
+      setErrorOpen(true);
+    }
   };
 
   return (
@@ -87,7 +98,6 @@ function QuizFormApp(props) {
             />
           </FormControl>
           <Button
-            disabled={!isValid()}
             disableRipple
             fullWidth
             variant="outlined"
@@ -145,4 +155,4 @@ function QuizFormApp(props) {
   );
 }
 
-export default withStyles(register)(QuizFormApp);
+export default withStyles(register)(LogApp);
