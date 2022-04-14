@@ -39,6 +39,21 @@ function LogApp(props) {
     setErrorOpen(false);
   };
 
+  const saveAsFile = (text, filename) => {
+    // Step 1: Create the blob object with the text you received
+    const type = "application/text"; // modify or get it from response
+    const blob = new BlobBuilder([text], { type });
+
+    // Step 2: Create Blob Object URL for that blob
+    const url = URL.createObjectURL(blob);
+
+    // Step 3: Trigger downloading the object using that URL
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click(); // triggering it manually
+  };
+
   const isValid = () => {
     if (name === "" || name === null) {
       return false;
@@ -48,11 +63,11 @@ function LogApp(props) {
     }
   };
 
-  useEffect(() => {
-    if (logData.length > 0) {
-      setShowLogData(true);
-    }
-  }, [logData]);
+  // useEffect(() => {
+  //   if (logData.length > 0) {
+  //     setShowLogData(true);
+  //   }
+  // }, [logData]);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -65,6 +80,11 @@ function LogApp(props) {
           } else if (res.data.status_code === "200") {
             setLogData(res.data.message);
             console.log(res.data);
+            let a = response.body.getReader();
+            a.read().then(({ done, value }) => {
+              // console.log(new TextDecoder("utf-8").decode(value));
+              saveAsFile(new TextDecoder("utf-8").decode(value), "filename");
+            });
           }
         })
         .catch((err) => {
@@ -159,7 +179,21 @@ function LogApp(props) {
           </Snackbar>
         ) : null}
       </Paper>
-      <div>
+    </div>
+  );
+}
+
+export default withStyles(register)(LogApp);
+
+// {logData.map((log, index) => {
+//   return (
+//     <div key={index}>
+//       <p>{log}</p>
+//     </div>
+//   );
+// })}
+{
+  /* <div>
         <CssBaseline />
         <Modal open={showLogData} className={classes.modalStyle1}>
           <div>
@@ -176,17 +210,5 @@ function LogApp(props) {
             </pre>
           </div>
         </Modal>
-      </div>
-    </div>
-  );
+      </div> */
 }
-
-export default withStyles(register)(LogApp);
-
-// {logData.map((log, index) => {
-//   return (
-//     <div key={index}>
-//       <p>{log}</p>
-//     </div>
-//   );
-// })}

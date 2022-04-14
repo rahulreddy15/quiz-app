@@ -148,13 +148,13 @@ export const register = theme => ({
     opacity: 0.7
   },
 
-  modalStyle1:{
-    position:'absolute',
-    top:'10%',
-    left:'10%',
-    overflow:'scroll',
-    height:'100%',
-    display:'block'
-  },
+  // modalStyle1:{
+  //   position:'absolute',
+  //   top:'10%',
+  //   left:'10%',
+  //   overflow:'scroll',
+  //   height:'75%',
+  //   display:'block'
+  // },
 
 });
