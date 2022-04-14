@@ -228,7 +228,7 @@ function QuizFormApp(props) {
             variant="outlined"
             className={classes.button}
           >
-            Get Quiz File
+            Get Log File
           </Button>
         </Paper>
       </div>
