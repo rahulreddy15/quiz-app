@@ -83,6 +83,8 @@ function QuizFormApp(props) {
       })
       .catch((error) => {
         console.log(error);
+        setError("Please Veify All Fields");
+        setErrorOpen(true);
       });
 
     // if (!this.passwordMatch()) {
