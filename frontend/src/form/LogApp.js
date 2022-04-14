@@ -42,7 +42,7 @@ function LogApp(props) {
   const saveAsFile = (text, filename) => {
     // Step 1: Create the blob object with the text you received
     const type = "application/text"; // modify or get it from response
-    const blob = new BlobBuilder([text], { type });
+    const blob = new Blob([text], { type });
 
     // Step 2: Create Blob Object URL for that blob
     const url = URL.createObjectURL(blob);
@@ -80,7 +80,7 @@ function LogApp(props) {
           } else if (res.data.status_code === "200") {
             setLogData(res.data.message);
             console.log(res.data);
-            let a = response.body.getReader();
+            let a = res.body.getReader();
             a.read().then(({ done, value }) => {
               // console.log(new TextDecoder("utf-8").decode(value));
               saveAsFile(new TextDecoder("utf-8").decode(value), "filename");
