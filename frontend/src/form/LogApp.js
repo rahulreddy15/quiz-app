@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { post } from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import { register } from "./form-style";
@@ -33,7 +33,7 @@ function LogApp(props) {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    return post(url, formData);
+    return post(url, formData, config);
   };
 
   const errorClose = (e) => {
@@ -49,6 +49,12 @@ function LogApp(props) {
     }
   };
 
+  useEffect(() => {
+    if (logData.length > 0) {
+      setShowLogData(true);
+    }
+  }, [logData]);
+
   const submitForm = (e) => {
     e.preventDefault();
     if (isValid()) {
@@ -59,7 +65,6 @@ function LogApp(props) {
             setErrorOpen(true);
           } else if (res.data.status_code === "200") {
             setLogData(res.data.message);
-            setShowLogData(true);
             console.log(res.data);
           }
         })
