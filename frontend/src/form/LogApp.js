@@ -55,14 +55,14 @@ function LogApp(props) {
   //   a.click(); // triggering it manually
   // };
 
-  // const isValid = () => {
-  //   if (name === "" || name === null) {
-  //     return false;
-  //   }
-  //   {
-  //     return true;
-  //   }
-  // };
+  const isValid = () => {
+    if (name === "" || name === null) {
+      return false;
+    }
+    {
+      return true;
+    }
+  };
 
   // useEffect(() => {
   //   if (logData.length > 0) {
