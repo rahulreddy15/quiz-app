@@ -226,7 +226,7 @@ function QuizFormApp(props) {
             disableRipple
             fullWidth
             variant="outlined"
-            className={classes.button_two}
+            className={classes.button}
           >
             Get Quiz File
           </Button>

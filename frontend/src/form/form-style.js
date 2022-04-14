@@ -5,7 +5,7 @@ const textLight = "#eaf2f4";
 const textDark = "#0D0D0D";
 const borderLight = "rgba(206,212,218, .993)";
 
-export const register = (theme) => ({
+export const register = theme => ({
   main: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(4),
@@ -16,8 +16,8 @@ export const register = (theme) => ({
     [theme.breakpoints.up(400 + theme.spacing(2))]: {
       width: 400,
       marginLeft: "auto",
-      marginRight: "auto",
-    },
+      marginRight: "auto"
+    }
   },
   paper: {
     position: "relative",
@@ -31,8 +31,8 @@ export const register = (theme) => ({
     boxShadow: ".2px 12px 18px rgba(131,153,167,0.6)",
 
     "&:hover": {
-      boxShadow: "0px 24px 36px rgba(131,153,167,0.99)",
-    },
+      boxShadow: "0px 24px 36px rgba(131,153,167,0.99)"
+    }
   },
   avatar: {
     marginTop: 20,
@@ -40,17 +40,17 @@ export const register = (theme) => ({
     background: "rgba(255,255,255,0.85)",
     width: "100px",
     height: "100px",
-    boxShadow: "0px 0px 12px rgba(131,153,167,0.99)",
+    boxShadow: "0px 0px 12px rgba(131,153,167,0.99)"
   },
 
   icon: {
     width: "80px",
     height: "80px",
-    color: "rgba(131,153,167,0.79)",
+    color: "rgba(131,153,167,0.79)"
   },
 
   form: {
-    margin: theme.spacing(4),
+    margin: theme.spacing(4)
   },
   labels: {
     padding: `${theme.spacing(1)}px ${theme.spacing(4)}px`,
@@ -59,7 +59,7 @@ export const register = (theme) => ({
     fontFamily: "PT Mono, monospace",
     fontWeight: 300,
     opacity: 0.45,
-    color: `${textDark} !important`,
+    color: `${textDark} !important`
   },
 
   inputs: {
@@ -76,8 +76,8 @@ export const register = (theme) => ({
     borderColor: borderLight,
 
     "&:hover": {
-      background: "rgba(169,198,217,0.36457423) ",
-    },
+      background: "rgba(169,198,217,0.36457423) "
+    }
   },
 
   button: {
@@ -102,69 +102,34 @@ export const register = (theme) => ({
       bottom: 0,
       left: 0,
       right: 0,
-      opacity: 1,
+      opacity: 1
     },
     "&::before": {
       borderBottom: "2px solid rgba(255,255,255,.58)",
       borderTop: "2px solid rgba(255,255,255,.58)",
-      transform: "scale(0,1)",
+      transform: "scale(0,1)"
     },
     "&::after": {
       borderLeft: "3px solid rgba(255,255,255,.58)",
       borderRight: "3px solid rgba(255,255,255,.58)",
-      transform: "scale(1,0)",
+      transform: "scale(1,0)"
     },
-  },
-
-  button_two: {
-    color: textDark,
-    background: "rgba(255,255,255,.45)",
-    position: "relative",
-    fontWeight: 400,
-    fontFamily: "Raleway, sans-serif",
-    overflow: "hidden",
-    marginTop: 40,
-    padding: `${theme.spacing(1.6)}px`,
-    border: "none",
-    borderRadius: "8px",
-    letterSpacing: "3px",
-
-    "&::before, &::after": {
-      position: "absolute",
-      content: '""',
-      boxSizing: "border-box",
-      borderRadius: "8px",
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      opacity: 1,
-    },
-    "&::before": {
-      borderBottom: "2px solid rgba(255,255,255,.58)",
-      borderTop: "2px solid rgba(255,255,255,.58)",
-      transform: "scale(0,1)",
-    },
-    "&::after": {
-      borderLeft: "3px solid rgba(255,255,255,.58)",
-      borderRight: "3px solid rgba(255,255,255,.58)",
-      transform: "scale(1,0)",
-    },
+    
     "&:hover::before": {
       transform: "scale(1,1)",
-      transition: "transform cubic-bezier(0.85,.36,.8,.42) 0.3s",
+      transition: "transform cubic-bezier(0.85,.36,.8,.42) 0.3s"
     },
     "&:hover::after": {
       transform: "scale(1,1)",
-      transition: "transform cubic-bezier(0.85,.36,.8,.42) .2s",
+      transition: "transform cubic-bezier(0.85,.36,.8,.42) .2s"
     },
     "&::first-letter": {
-      color: orange,
+      color: orange
     },
     "&:hover": {
       background: "rgba(169,198,217,0.8)",
-      color: textLight,
-    },
+      color: textLight
+    }
   },
   error: {
     border: `1.2px solid ${red[900]}`,
@@ -175,11 +140,11 @@ export const register = (theme) => ({
     fontFamily: "Raleway, sans-serif",
     display: "flex",
     alignItems: "center",
-    paddingBottom: theme.spacing(3),
+    paddingBottom: theme.spacing(3)
   },
 
   passwordEye: {
     color: "rgba(131,153,167,0.9)",
-    opacity: 0.7,
-  },
+    opacity: 0.7
+  }
 });
