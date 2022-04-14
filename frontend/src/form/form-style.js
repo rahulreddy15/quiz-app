@@ -114,6 +114,40 @@ export const register = theme => ({
       borderRight: "3px solid rgba(255,255,255,.58)",
       transform: "scale(1,0)"
     },
+    button_two: {
+      color: textDark,
+      background: "rgba(255,255,255,.45)",
+      position: "relative",
+      fontWeight: 400,
+      fontFamily: "Raleway, sans-serif",
+      overflow: "hidden",
+      marginTop: 40,
+      padding: `${theme.spacing(1.6)}px`,
+      border: "none",
+      borderRadius: "8px",
+      letterSpacing: "3px",
+  
+      "&::before, &::after": {
+        position: "absolute",
+        content: '""',
+        boxSizing: "border-box",
+        borderRadius: "8px",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        opacity: 1
+      },
+      "&::before": {
+        borderBottom: "2px solid rgba(255,255,255,.58)",
+        borderTop: "2px solid rgba(255,255,255,.58)",
+        transform: "scale(0,1)"
+      },
+      "&::after": {
+        borderLeft: "3px solid rgba(255,255,255,.58)",
+        borderRight: "3px solid rgba(255,255,255,.58)",
+        transform: "scale(1,0)"
+      },
     "&:hover::before": {
       transform: "scale(1,1)",
       transition: "transform cubic-bezier(0.85,.36,.8,.42) 0.3s"
