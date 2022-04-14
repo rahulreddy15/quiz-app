@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { get, post } from 'axios'
+import { get, post } from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import { register } from "./form-style";
-import {useNavigate} from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { FormControl, Input, InputLabel, Button } from "@material-ui/core";
@@ -13,22 +13,21 @@ import ErrorIcon from "@material-ui/icons/Error";
 import CloseIcon from "@material-ui/icons/Close";
 
 function QuizFormApp(props) {
-
   const { classes, setData, data } = props;
 
   const navigate = useNavigate();
-  
+
   const [name, setName] = useState("");
-  const [time, setTime] = useState(0)
-  const [n_q, setN_Q] = useState(0)
-  const [file, setFile] = useState({})
-  const [error, setError] = useState(null)
-  const [errorOpen, setErrorOpen] = useState(false)
+  const [time, setTime] = useState(0);
+  const [n_q, setN_Q] = useState(0);
+  const [file, setFile] = useState({});
+  const [error, setError] = useState(null);
+  const [errorOpen, setErrorOpen] = useState(false);
 
   const onChange = (e) => {
-    setFile(e.target.files[0])
-  }
-  
+    setFile(e.target.files[0]);
+  };
+
   // useEffect(() => {
   //   console.log(file)
   //   console.log(n_q)
@@ -48,40 +47,39 @@ function QuizFormApp(props) {
       },
     };
     return post(url, formData);
-  }
+  };
 
   const errorClose = (e) => {
-    setErrorOpen(false)
+    setErrorOpen(false);
   };
 
   const isValid = () => {
-    return true
-  }
+    return true;
+  };
 
   const isFileValid = () => {
     if (file) {
       if (file.name !== undefined) {
-        return true
+        return true;
       }
       if (file.name == "") {
-        return true
+        return true;
       }
     }
-    return false
-  }
-
+    return false;
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
-    fileUpload().then((response) => {
-      setData(response.data.message)
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-    })
-  
-  
-    
+    fileUpload()
+      .then((response) => {
+        setData(response.data.message);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     // if (!this.passwordMatch()) {
     //   this.setState({
     //     errorOpen: true,
@@ -91,12 +89,12 @@ function QuizFormApp(props) {
   };
   useEffect(() => {
     if (data) {
-      navigate('/quiz')
+      navigate("/quiz");
     }
-   }, [data, setData]);
+  }, [data, setData]);
 
-    
-    return (
+  return (
+    <div>
       <div className={classes.main}>
         <CssBaseline />
 
@@ -110,10 +108,7 @@ function QuizFormApp(props) {
           >
             Generate Quiz
           </Button>
-          <form
-            className={classes.form}
-            onSubmit={() => submitForm()}
-          >
+          <form className={classes.form} onSubmit={() => submitForm()}>
             <FormControl required fullWidth margin="normal">
               <InputLabel htmlFor="name" className={classes.labels}>
                 Name
@@ -166,7 +161,9 @@ function QuizFormApp(props) {
                 className={classes.button}
                 fullWidth
               >
-                {(!isFileValid()) ? (`Select Quiz File`) : (`File Selected: ${file.name}`)}
+                {!isFileValid()
+                  ? `Select Quiz File`
+                  : `File Selected: ${file.name}`}
               </Button>
             </label>
             <Button
@@ -218,7 +215,25 @@ function QuizFormApp(props) {
           ) : null}
         </Paper>
       </div>
-    );
+      <div className={classes.main}>
+        <CssBaseline />
+
+        <Paper className={classes.paper}>
+          <Button
+            component={Link}
+            to="/log"
+            disabled={false}
+            disableRipple
+            fullWidth
+            variant="outlined"
+            className={classes.button}
+          >
+            Get Quiz File
+          </Button>
+        </Paper>
+      </div>
+    </div>
+  );
 }
 
 export default withStyles(register)(QuizFormApp);

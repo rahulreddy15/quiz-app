@@ -8,11 +8,6 @@ import questionStyle from "./result-style";
 import theme from "../../styles/theme";
 
 class Result extends React.Component {
-
-    redirectHome = () => {
-        return <Navigate to="/" />;
-    }
-
     render() {
         const { classes } = this.props;
         console.log(this.props);
@@ -44,7 +39,6 @@ class Result extends React.Component {
                             to="/"
                             variant="contained"
                             className={classes.resetButton}
-                            onClick={this.redirectHome}
                         >
                             Go Home
                         </Button>
