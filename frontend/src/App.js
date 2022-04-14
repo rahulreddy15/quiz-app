@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./form/FormApp";
 import QuizApp from "./app/QuizApp";
+import LogApp from "./form/LogApp";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Form data={data} setData={setData}/>} />
         <Route path="/quiz" element={ <QuizApp data={data}/>} />
+        <Route path="/log" element={ <LogApp/>} />
       </Routes>
     </div>
   );
