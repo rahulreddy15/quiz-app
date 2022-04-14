@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { saveAs } from 'file-saver';
 import { post } from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import { register } from "./form-style";
@@ -39,29 +40,29 @@ function LogApp(props) {
     setErrorOpen(false);
   };
 
-  const saveAsFile = (text, filename) => {
-    // Step 1: Create the blob object with the text you received
-    const type = "application/text"; // modify or get it from response
-    const blob = new Blob([text], { type });
+  // const saveAsFile = (text, filename) => {
+  //   // Step 1: Create the blob object with the text you received
+  //   const type = "application/text"; // modify or get it from response
+  //   const blob = new Blob([text], { type });
 
-    // Step 2: Create Blob Object URL for that blob
-    const url = URL.createObjectURL(blob);
+  //   // Step 2: Create Blob Object URL for that blob
+  //   const url = URL.createObjectURL(blob);
 
-    // Step 3: Trigger downloading the object using that URL
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    a.click(); // triggering it manually
-  };
+  //   // Step 3: Trigger downloading the object using that URL
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = filename;
+  //   a.click(); // triggering it manually
+  // };
 
-  const isValid = () => {
-    if (name === "" || name === null) {
-      return false;
-    }
-    {
-      return true;
-    }
-  };
+  // const isValid = () => {
+  //   if (name === "" || name === null) {
+  //     return false;
+  //   }
+  //   {
+  //     return true;
+  //   }
+  // };
 
   // useEffect(() => {
   //   if (logData.length > 0) {
@@ -80,11 +81,10 @@ function LogApp(props) {
           } else if (res.data.status_code === "200") {
             setLogData(res.data.message);
             console.log(res.data);
-            let a = res.body.getReader();
-            a.read().then(({ done, value }) => {
-              // console.log(new TextDecoder("utf-8").decode(value));
-              saveAsFile(new TextDecoder("utf-8").decode(value), "filename");
+            var blob = new Blob(res.data.message, {
+              type: "text/plain;charset=utf-8"
             });
+            saveAs(blob, "log.txt");
           }
         })
         .catch((err) => {
