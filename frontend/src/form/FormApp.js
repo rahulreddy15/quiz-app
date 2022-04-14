@@ -76,7 +76,7 @@ function QuizFormApp(props) {
         if (res.data.status === "200") {
           setData(res.data.message);
           console.log(res.data.message);
-        } else if (res, data.status === "400") {
+        } else if (res.data.status === "400") {
           setError(res.data.message);
           setErrorOpen(true);
         }

@@ -146,5 +146,15 @@ export const register = theme => ({
   passwordEye: {
     color: "rgba(131,153,167,0.9)",
     opacity: 0.7
-  }
+  },
+
+  modalStyle1:{
+    position:'absolute',
+    top:'10%',
+    left:'10%',
+    overflow:'scroll',
+    height:'100%',
+    display:'block'
+  },
+
 });

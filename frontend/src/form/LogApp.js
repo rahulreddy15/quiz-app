@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { FormControl, Input, InputLabel, Button } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
+import Modal from "@material-ui/core/Modal";
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import IconButton from "@material-ui/core/IconButton";
 import ErrorIcon from "@material-ui/icons/Error";
@@ -18,7 +19,9 @@ function LogApp(props) {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
   const [errorOpen, setErrorOpen] = useState(false);
-  const [logData, setLogData] = useState({});
+  const [logData, setLogData] = useState([]);
+  const [showLogData, setShowLogData] = useState(false);
+
 
   const logFileRequest = () => {
     const url = "https://obscure-stream-30055.herokuapp.com/getLogFile";
@@ -56,6 +59,7 @@ function LogApp(props) {
             setErrorOpen(true);
           } else if (res.data.status_code === "200") {
             setLogData(res.data.message);
+            setShowLogData(true);
             console.log(res.data);
           }
         })
@@ -151,6 +155,25 @@ function LogApp(props) {
           </Snackbar>
         ) : null}
       </Paper>
+      <Modal open={showLogData} className={classes.modalStyle1}>
+        <div>
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            onClick={(e) => setShowLogData(false)}
+          >
+            Close
+          </Button>
+          {logData.map((log, index) => {
+            return (
+              <div key={index}>
+                <p>{log}</p>
+              </div>
+            );
+          })}
+        </div>
+      </Modal>
     </div>
   );
 }
