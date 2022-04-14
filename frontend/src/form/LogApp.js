@@ -75,10 +75,10 @@ function LogApp(props) {
     if (isValid()) {
       logFileRequest()
         .then((res) => {
-          if (res.data.status_code === "400") {
+          if (res.data.status === "400") {
             setError(res.data.message);
             setErrorOpen(true);
-          } else if (res.data.status_code === "200") {
+          } else if (res.data.status === "200") {
             setLogData(res.data.message);
             console.log(res.data);
             var blob = new Blob(res.data.message, {
