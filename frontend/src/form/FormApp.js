@@ -42,11 +42,10 @@ function QuizFormApp(props) {
     formData.append("time", time);
     const config = {
       headers: {
-        "content-type": "multipart/form-data",
-        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "multipart/form-data",
       },
     };
-    return post(url, formData);
+    return post(url, formData, config);
   };
 
   const errorClose = (e) => {
@@ -73,12 +72,13 @@ function QuizFormApp(props) {
     e.preventDefault();
     fileUpload()
       .then((res) => {
-        if (res.data.status_code === "400") {
-          setError(res.data.message);
-          setErrorOpen(true);
-        } else if (res.data.status_code === "200") {
+        console.log(res.data)
+        if (res.data.status === "200") {
           setData(res.data.message);
           console.log(res.data.message);
+        } else if (res, data.status === "400") {
+          setError(res.data.message);
+          setErrorOpen(true);
         }
       })
       .catch((error) => {
@@ -94,6 +94,7 @@ function QuizFormApp(props) {
   };
   useEffect(() => {
     if (data) {
+      console.log(data)
       navigate("/quiz");
     }
   }, [data, setData]);

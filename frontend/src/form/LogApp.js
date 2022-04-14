@@ -21,12 +21,12 @@ function LogApp(props) {
   const [logData, setLogData] = useState({});
 
   const logFileRequest = () => {
-    const url = "https://obscure-stream-30055.herokuapp.com/getlogfile";
+    const url = "https://obscure-stream-30055.herokuapp.com/getLogFile";
     const formData = new FormData();
     formData.append("name", name);
     const config = {
       headers: {
-        "content-type": "Application/json",
+        "content-type": "multipart/form-data",
         "Access-Control-Allow-Origin": "*",
       },
     };

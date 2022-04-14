@@ -295,6 +295,7 @@ class QuizApp extends React.Component {
                 <Result
                   result={this.state.result}
                   tryAgainPressed={this.onTryAgainPressed}
+                  name={this.props.data[3]}
                 />
               )
             ) : (
