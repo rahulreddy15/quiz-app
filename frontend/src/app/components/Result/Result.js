@@ -87,7 +87,7 @@ class Result extends React.Component {
               className={classes.resetButton}
               color="secondary"
               component={Link}
-              to="/home"
+              to="/"
             >
               Try Again
             </Button>
