@@ -53,7 +53,18 @@ function QuizFormApp(props) {
   };
 
   const isValid = () => {
-    if (name === "" || time === 0 || time == null || n_q === 0 || file === {} || file === "" || file === undefined) {
+    if (
+      name === "" ||
+      name === undefined ||
+      name === null ||
+      time === 0 ||
+      time === null ||
+      time === undefined ||
+      n_q === 0 ||
+      file === {} ||
+      file === "" ||
+      file === undefined
+    ) {
       return false;
     }
     return true;
@@ -76,26 +87,25 @@ function QuizFormApp(props) {
 
     if (isValid()) {
       fileUpload()
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status === "200") {
-          setData(res.data.message);
-          console.log(res.data.message);
-        } else if (res.data.status === "400") {
-          setError(res.data.message);
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.status === "200") {
+            setData(res.data.message);
+            console.log(res.data.message);
+          } else if (res.data.status === "400") {
+            setError(res.data.message);
+            setErrorOpen(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          setError("Please Veify All Fields And File Formats");
           setErrorOpen(true);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        setError("Please Veify All Fields And File Formats");
-        setErrorOpen(true);
-      });
+        });
     } else {
       setError("Please fill all the fields");
       setErrorOpen(true);
     }
-    
 
     // if (!this.passwordMatch()) {
     //   this.setState({
