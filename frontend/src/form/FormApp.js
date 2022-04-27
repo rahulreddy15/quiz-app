@@ -53,9 +53,7 @@ function QuizFormApp(props) {
   };
 
   const isValid = () => {
-    if (name === "" || time === 0 || n_q === 0 || file === {} || file === "" || file === undefined) {
-      setError("Please fill all the fields");
-      setErrorOpen(true);
+    if (name === "" || time === 0 || time == null || n_q === 0 || file === {} || file === "" || file === undefined) {
       return false;
     }
     return true;
@@ -76,7 +74,8 @@ function QuizFormApp(props) {
   const submitForm = (e) => {
     e.preventDefault();
 
-    fileUpload()
+    if (isValid()) {
+      fileUpload()
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "200") {
@@ -92,6 +91,11 @@ function QuizFormApp(props) {
         setError("Please Veify All Fields And File Formats");
         setErrorOpen(true);
       });
+    } else {
+      setError("Please fill all the fields");
+      setErrorOpen(true);
+    }
+    
 
     // if (!this.passwordMatch()) {
     //   this.setState({
